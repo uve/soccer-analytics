@@ -1,12 +1,14 @@
 .team-blue-block {
     background: rgba(0, 0, 255, 0.07);
+    width: 200px;
 }
 
 .team-red-block {
     background: rgba(255, 0, 0, 0.07);
+    width: 200px;
 }
 
-.ttd-btn {
+.ttd-btn, .remove-action {
     font-weight: bold;
     font-size: 32px;
     cursor: pointer;
@@ -14,10 +16,38 @@
     margin-right: 5px;
 }
 
-.ttd-plus-btn {
+.ttd-plus-btn, .ttd-status-plus {
     color: green;
 }
 
-.ttd-minus-btn {
+.ttd-minus-btn, .remove-action, .ttd-status-minus {
     color: red;
+}
+
+table td, table th {
+    border: 1px solid #eee;
+    text-align: center;
+}
+
+td.player-name {
+    width: 100px;
+    text-align: left;
+}
+
+
+.flex {
+    display: inline-flex;
+}
+
+h2 {
+    text-align: center;
+}
+
+.all-actions li:first-child {
+    padding-bottom: 20px;
+    font-weight: bold;
+}
+
+.all-actions, .team {
+    list-style: none;
 }

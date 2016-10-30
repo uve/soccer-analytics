@@ -28,7 +28,7 @@ module soccer {
 
         public render(): void {
             let players: string = this.players.map((player: Player): string => {
-                return `<li id="${player.id}">
+                return `<li id="${player.Id}">
                             <span class="ttd-btn ttd-plus-btn">+</span>
                             <span class="ttd-btn ttd-minus-btn">-</span>
                             <span class="player-name">${player.getName()}</span>
@@ -39,6 +39,18 @@ module soccer {
             <ul class="team">
                 ${players}
             </ul>`;
+        }
+
+        public hasPlayer(player_id: number): boolean {
+            return this.players.some((player: Player) => player.Id === player_id);
+        }
+
+        public getPlayerById(player_id: number): Player {
+            return this.players.find((player: Player) => (player.Id === player_id));
+        }
+
+        public getName(): string {
+            return (this.type === TEAM_TYPE.BLUE) ? 'Синие' : 'Красные';
         }
     }
 

@@ -16,19 +16,51 @@ module soccer {
         private teamRed: Team;
 
         private youtubePlayer: YT.Player;
+        private results: Results;
 
         constructor(params: GameParams) {
             this.initYoutube(params.video_id);
-
-            this.game_players = [];
 
             this.teamBlue = new Team(TEAM_TYPE.BLUE, ".team-blue");
             this.teamBlue.add(params.playersBlue);
             this.teamRed = new Team(TEAM_TYPE.BLUE, ".team-red");
             this.teamRed.add(params.playersRed);
 
-            this.game_players = this.game_players.concat(this.teamBlue.getPlayers());
-            this.game_players = this.game_players.concat(this.teamRed.getPlayers());
+            this.results = new Results();
+            this.results.addTeam(this.teamBlue);
+            this.results.addTeam(this.teamRed);
+
+            this.results.render();
+
+            this.initCallbacks();
+        }
+
+        private initCallbacks(): void {
+            document.querySelector(".team-blue").addEventListener("click", (e: MouseEvent) => this.handleClick(e), false);
+            document.querySelector(".team-red").addEventListener("click", (e: MouseEvent) => this.handleClick(e), false);
+        }
+
+        private handleClick(e: MouseEvent) {
+            if (e.target !== e.currentTarget) {
+                if ((<any>e.target).classList.contains("ttd-plus-btn")) {
+                    this.ttdAction(e.target, ACTION_TYPE.TTD_PLUS);
+                }
+
+                if ((<any>e.target).classList.contains("ttd-minus-btn")) {
+                    this.ttdAction(e.target, ACTION_TYPE.TTD_MINUS);
+                }
+            }
+            e.stopPropagation();
+        }
+
+        private ttdAction(el: EventTarget, actionType: ACTION_TYPE) {
+            let player_id: string = (<any>el).parentElement.getAttribute('id');
+
+            this.results.addAction({
+                player_id: parseInt(player_id, 10),
+                actionType: actionType,
+                time: this.youtubePlayer.getCurrentTime()
+            });
         }
 
         private initYoutube(video_id: string) {
@@ -45,7 +77,7 @@ module soccer {
 
         private onPlayerReady(event: any) {
             console.log("onPlayerReady");
-           // event.target.playVideo();
+            // event.target.playVideo();
             this.render();
         }
 
