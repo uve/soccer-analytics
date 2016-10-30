@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "module": "system",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "allowJs": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "ES2015",
+    "sourceMap": true,
+    "outFile": "./build/main.js"
+  },
+    "include": [
+        "node_modules/@types/youtube/index.d.ts",
+        "src/**/*"
+    ]
+}

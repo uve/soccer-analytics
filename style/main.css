@@ -1,0 +1,23 @@
+.team-blue-block {
+    background: rgba(0, 0, 255, 0.07);
+}
+
+.team-red-block {
+    background: rgba(255, 0, 0, 0.07);
+}
+
+.ttd-btn {
+    font-weight: bold;
+    font-size: 32px;
+    cursor: pointer;
+
+    margin-right: 5px;
+}
+
+.ttd-plus-btn {
+    color: green;
+}
+
+.ttd-minus-btn {
+    color: red;
+}
