@@ -6,7 +6,7 @@ module soccer {
     }
 
     export class SoccerControl {
-        static YOUTUBE_VIDEO_ID: string = 'M7lc1UVf-VE';
+        static START_TIME: number = 19;
         static YOUTUBE_OBJECT: string = 'player';
         static YOUTUBE_HEIGHT: number = 390;
         static YOUTUBE_WIDTH: number = 640;
@@ -67,10 +67,13 @@ module soccer {
             this.youtubePlayer = new YT.Player(SoccerControl.YOUTUBE_OBJECT, {
                 height: SoccerControl.YOUTUBE_HEIGHT,
                 width: SoccerControl.YOUTUBE_WIDTH,
-                videoId: video_id || SoccerControl.YOUTUBE_VIDEO_ID,
+                videoId: video_id,
                 events: {
-                    'onReady': (event: any)=> this.onPlayerReady(event),
-                    'onStateChange': (event: any)=> this.onPlayerStateChange(event)
+                    'onReady': (event: any) => this.onPlayerReady(event),
+                    'onStateChange': (event: any) => this.onPlayerStateChange(event)
+                },
+                playerVars: {
+                    start: SoccerControl.START_TIME
                 }
             });
         }

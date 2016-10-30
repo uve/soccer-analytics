@@ -1,6 +1,6 @@
 import SoccerControl = soccer.SoccerControl;
 
-const YOUTUBE_VIDEO_ID: string = 'M7lc1UVf-VE';
+const YOUTUBE_VIDEO_ID: string = 'qSNKITOwwq0';
 const PLAYERS_BLUE: string[] = ["Никита", "Паша У"];
 const PLAYERS_RED: string[] = ["Рома", "Антон"];
 
